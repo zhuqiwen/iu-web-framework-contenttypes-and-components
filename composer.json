@@ -1,0 +1,26 @@
+{
+  "name": "iu-rsb/iu-web-framework-2-rsb",
+  "description": "migrate a framework site to a rsb site",
+  "type": "project",
+  "license": "GPL-3.0-only",
+  "authors": [
+    {
+      "name": "Qiwen Zhu",
+      "email": "qiwzhu@iu.edu"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Edu\\IU\\RSB\\Framework2RSB\\": "src"
+    }
+  },
+  "minimum-stability": "dev",
+  "require": {
+    "iu-vpcm-dc/wcms-webservice": "dev-main",
+    "iu-webtech/wcms-generic-tool": "dev-main",
+    "iu-webtech/wcms-site-generic-tool-gui": "dev-main",
+    "iu-rsb/structured-data-nodes": "dev-main",
+    "iu-vpcm/cas2": "^1.0",
+    "phpunit/phpunit": "^9.5"
+  }
+}
