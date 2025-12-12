@@ -8,15 +8,17 @@ use Edu\IU\RSB\StructuredDataNodes\GroupNode;
 class Pullquote extends ChunkAbstract{
 
 
-    public readonly string $header;
-    public readonly string $headerLevel;
+    public readonly string $imageId;
+    public readonly string $imagePath;
+    public readonly string $attribution;
     public readonly string $content;
 
 
     public function fetchDataFromGroupNode(GroupNode $chunkDetails): void
     {
-        $this->header = $chunkDetails->getSingleDescendantNodeByPath('header')->text ?? '';
-        $this->headerLevel = $chunkDetails->getSingleDescendantNodeByPath('header-level')->text ?? '';
+        $this->imageId = $chunkDetails->getSingleDescendantNodeByPath('image')->fileId ?? '';
+        $this->imagePath = $chunkDetails->getSingleDescendantNodeByPath('image')->filePath ?? '';
+        $this->attribution = $chunkDetails->getSingleDescendantNodeByPath('attribution')->text ?? '';
         $this->content = $chunkDetails->getSingleDescendantNodeByPath('content')->text ?? '';
     }
 

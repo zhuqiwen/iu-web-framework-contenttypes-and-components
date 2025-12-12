@@ -9,4 +9,5 @@ abstract class ChunkAbstract implements GroupNodeInterface, ChunkInterface
 {
     use GroupNodeTraits;
     use ChunkTraits;
+
 }

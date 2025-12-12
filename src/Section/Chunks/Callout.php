@@ -7,15 +7,17 @@ use Edu\IU\RSB\IUWebFrameworkContentTypesAndComponents\GroupNodeTraits;
 use Edu\IU\RSB\StructuredDataNodes\GroupNode;
 class Callout extends ChunkAbstract{
 
-    public readonly string $header;
-    public readonly string $headerLevel;
+    public readonly string $imageId;
+    public readonly string $imagePath;
     public readonly string $content;
+    public readonly string $position;
 
 
     public function fetchDataFromGroupNode(GroupNode $chunkDetails): void
     {
-        $this->header = $chunkDetails->getSingleDescendantNodeByPath('header')->text ?? '';
-        $this->headerLevel = $chunkDetails->getSingleDescendantNodeByPath('header-level')->text ?? '';
+        $this->imageId = $chunkDetails->getSingleDescendantNodeByPath('image')->fileId ?? '';
+        $this->imagePath = $chunkDetails->getSingleDescendantNodeByPath('image')->filePath ?? '';
+        $this->position = $chunkDetails->getSingleDescendantNodeByPath('position')->text ?? '';
         $this->content = $chunkDetails->getSingleDescendantNodeByPath('content')->text ?? '';
     }
 

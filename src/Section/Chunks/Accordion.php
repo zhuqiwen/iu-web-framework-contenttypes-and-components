@@ -8,6 +8,7 @@ use Edu\IU\RSB\IUWebFrameworkContentTypesAndComponents\Section\Chunks\Accordion\
 use Edu\IU\RSB\StructuredDataNodes\GroupNode;
 
 class Accordion extends ChunkAbstract{
+
     public readonly string $position;
     public readonly string $headerLevel;
     public readonly array $folds;

@@ -7,9 +7,8 @@ use Edu\IU\RSB\StructuredDataNodes\GroupNode;
 class Text extends ChunkAbstract {
 
 
-    //chunk header -> heading
-    //header level -> heading level
-    //content -> text content
+    public readonly string $position;
+
     public readonly string $header;
     public readonly string $headerLevel;
     public readonly string $content;
@@ -17,6 +16,7 @@ class Text extends ChunkAbstract {
 
     public function fetchDataFromGroupNode(GroupNode $chunkDetails): void
     {
+        $this->position = $chunkDetails->getSingleDescendantNodeByPath('position')->text ?? '';
         $this->header = $chunkDetails->getSingleDescendantNodeByPath('header')->text ?? '';
         $this->headerLevel = $chunkDetails->getSingleDescendantNodeByPath('header-level')->text ?? '';
         $this->content = $chunkDetails->getSingleDescendantNodeByPath('content')->text ?? '';

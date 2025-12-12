@@ -10,6 +10,7 @@ class Panel extends ChunkAbstract{
 
     public readonly string $header;
     public readonly string $headerLevel;
+    public readonly string $position;
     public readonly string $content;
 
 
@@ -17,6 +18,7 @@ class Panel extends ChunkAbstract{
     {
         $this->header = $chunkDetails->getSingleDescendantNodeByPath('header')->text ?? '';
         $this->headerLevel = $chunkDetails->getSingleDescendantNodeByPath('header-level')->text ?? '';
+        $this->position = $chunkDetails->getSingleDescendantNodeByPath('position')->text ?? '';
         $this->content = $chunkDetails->getSingleDescendantNodeByPath('content')->text ?? '';
     }
 
