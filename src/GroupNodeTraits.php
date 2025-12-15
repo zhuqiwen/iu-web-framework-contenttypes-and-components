@@ -12,7 +12,7 @@ trait GroupNodeTraits{
         $this->fetchDataFromGroupNode($groupNode);
     }
 
-    public function getAssetStbClassObj(AssetNode $node): \stdClass
+    public function getAssetStdClassObj(AssetNode $node): \stdClass
     {
         if ($node->assetType == 'page,file,symlink'){
 

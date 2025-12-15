@@ -20,7 +20,7 @@ class CTALink implements GroupNodeInterface {
     {
         $this->linkLabel = $linkGroupNode->getSingleDescendantNodeByPath('link-label')->text ?? '';
         $this->externalLink = $linkGroupNode->getSingleDescendantNodeByPath('link-external')->text ?? '';
-        $internalLinkObj = $this->getAssetStbClassObj($linkGroupNode->getSingleDescendantNodeByPath('link-internal'));
+        $internalLinkObj = $this->getAssetStdClassObj($linkGroupNode->getSingleDescendantNodeByPath('link-internal'));
         $this->internalLinkId = $internalLinkObj->id;
         $this->internalLinkPath = $internalLinkObj->path;
         $this->internalLinkType = $internalLinkObj->type;
