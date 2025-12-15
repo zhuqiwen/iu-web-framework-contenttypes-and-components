@@ -24,7 +24,7 @@ class InteractivePanel extends ChunkAbstract{
         $this->headerLevel = $chunkDetails->getSingleDescendantNodeByPath('header-level')->text ?? '';
         $this->subhead = $chunkDetails->getSingleDescendantNodeByPath('subhead')->text ?? '';
         $this->externalLink = $chunkDetails->getSingleDescendantNodeByPath('link-external')->text ?? '';
-        $internalLinkObj = $this->getAssetStbClassObj($chunkDetails->getSingleDescendantNodeByPath('link-internal'));
+        $internalLinkObj = $this->getAssetStdClassObj($chunkDetails->getSingleDescendantNodeByPath('link-internal'));
         $this->internalLinkId = $internalLinkObj->id;
         $this->internalLinkPath = $internalLinkObj->path;
         $this->internalLinkType = $internalLinkObj->type;
