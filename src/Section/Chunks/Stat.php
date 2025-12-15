@@ -8,16 +8,19 @@ use Edu\IU\RSB\StructuredDataNodes\GroupNode;
 class Stat extends ChunkAbstract{
 
 
-    public readonly string $header;
+    public readonly string $statNumber;
+    public readonly string $position;
     public readonly string $headerLevel;
     public readonly string $content;
 
 
     public function fetchDataFromGroupNode(GroupNode $chunkDetails): void
     {
-        $this->header = $chunkDetails->getSingleDescendantNodeByPath('header')->text ?? '';
-        $this->headerLevel = $chunkDetails->getSingleDescendantNodeByPath('header-level')->text ?? '';
+        $this->statNumber = $chunkDetails->getSingleDescendantNodeByPath('stat-number')->text ?? '';
         $this->content = $chunkDetails->getSingleDescendantNodeByPath('content')->text ?? '';
+        $this->position = $chunkDetails->getSingleDescendantNodeByPath('position')->text ?? '';
+
+        $this->fetchDataLinkInfo($chunkDetails);
     }
 
 }

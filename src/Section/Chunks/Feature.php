@@ -32,15 +32,7 @@ class Feature extends ChunkAbstract{
         $this->imageId = $imageNode->fileId ?? '';
         $this->imagePath = $imageNode->filePath ?? '';
 
-        $internalLinkAssetNode = $chunkDetails->getSingleDescendantNodeByPath('link-internal');
-        $this->externalLink = $chunkDetails->getSingleDescendantNodeByPath('link-external');
-
-
-        $linkAssetObj = $this->getAssetStdClassObj($internalLinkAssetNode);
-        $this->internalLinkId = $linkAssetObj->id;
-        $this->internalLinkPath = $linkAssetObj->path;
-        $this->internalLinkType = $linkAssetObj->type;
-        $this->linkLabel = $chunkDetails->getSingleDescendantNodeByPath('link-label')->text ?? '';
+        $this->fetchDataLinkInfo($chunkDetails);
     }
 
 }
