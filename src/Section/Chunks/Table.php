@@ -4,20 +4,20 @@ namespace Edu\IU\RSB\IUWebFrameworkContentTypesAndComponents\Section\Chunks;
 
 use Edu\IU\RSB\IUWebFrameworkContentTypesAndComponents\GroupNodeInterface;
 use Edu\IU\RSB\IUWebFrameworkContentTypesAndComponents\GroupNodeTraits;
+use Edu\IU\RSB\IUWebFrameworkContentTypesAndComponents\Section\Chunks\Table\Body;
+use Edu\IU\RSB\IUWebFrameworkContentTypesAndComponents\Section\Chunks\Table\Header;
 use Edu\IU\RSB\StructuredDataNodes\GroupNode;
 class Table extends ChunkAbstract{
 
 
-    public readonly string $header;
-    public readonly string $headerLevel;
-    public readonly string $content;
+    public readonly Header $header;
+    public readonly Body $body;
 
 
     public function fetchDataFromGroupNode(GroupNode $chunkDetails): void
     {
-        $this->header = $chunkDetails->getSingleDescendantNodeByPath('header')->text ?? '';
-        $this->headerLevel = $chunkDetails->getSingleDescendantNodeByPath('header-level')->text ?? '';
-        $this->content = $chunkDetails->getSingleDescendantNodeByPath('content')->text ?? '';
+        $this->header = new Header($chunkDetails->getSingleDescendantNodeByPath('table-header'));
+        $this->body = new Body($chunkDetails->getSingleDescendantNodeByPath('table-body')->text ?? '');
     }
 
 }
