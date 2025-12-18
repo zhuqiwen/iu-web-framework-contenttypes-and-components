@@ -4,6 +4,7 @@ namespace Edu\IU\RSB\IUWebFrameworkContentTypesAndComponents\Section;
 
 use Edu\IU\RSB\IUWebFrameworkContentTypesAndComponents\GroupNodeInterface;
 use Edu\IU\RSB\IUWebFrameworkContentTypesAndComponents\GroupNodeTraits;
+use Edu\IU\RSB\IUWebFrameworkContentTypesAndComponents\Section\Chunks\ChunkInterface;
 use Edu\IU\RSB\StructuredDataNodes\GroupNode;
 
 class Section implements GroupNodeInterface{
@@ -44,8 +45,19 @@ class Section implements GroupNodeInterface{
             $chunkType = preg_replace('/[^a-zA-Z]+/', '', $chunkType);
             $className = __NAMESPACE__ . '\\Chunks\\' . $chunkType;
             if (class_exists($className)) {
-                $result[] = new $className($chunkGroupNode);
+                $result[] = new $className($chunkGroupNode->getSingleDescendantNodeByPath('details'));
             }
+        }
+
+        return $result;
+    }
+
+
+    public function getChunk(int $zeroBasedIndex): ChunkInterface | null
+    {
+        $result = null;
+        if ($zeroBasedIndex < sizeof($this->chunks)) {
+            $result = $this->chunks[$zeroBasedIndex];
         }
 
         return $result;
