@@ -9,13 +9,17 @@ trait PageTraits{
 
     public readonly string $path;
     public readonly string $name;
+    public readonly string $id;
+    public readonly string $parentFolderId;
     public readonly string $parentFolderPath;
     /**
      * @var array of Section object
      */
     public readonly array $sections;
     public readonly ?BannerInterface $banner;
-    public readonly Metadata $metadata;
+    public readonly \stdClass $metadata;
+    public readonly string $contentTypeId;
+    public readonly string $contentTypePath;
 
 
 
