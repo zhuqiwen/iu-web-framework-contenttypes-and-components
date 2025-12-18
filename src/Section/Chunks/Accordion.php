@@ -11,7 +11,7 @@ class Accordion extends ChunkAbstract{
 
     public readonly string $position;
     public readonly string $headerLevel;
-    public readonly array $folds;
+    public array $folds;
 
 
     public function fetchDataFromGroupNode(GroupNode $chunkDetails): void

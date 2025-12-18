@@ -10,7 +10,7 @@ class Row implements GroupNodeInterface
 {
 
     use GroupNodeTraits;
-    public readonly array $cells;
+    public  array $cells;
 
     public function fetchDataFromGroupNode(GroupNode $rowGroupNode): void
     {

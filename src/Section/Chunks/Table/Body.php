@@ -11,7 +11,7 @@ class Body implements GroupNodeInterface
 
     use GroupNodeTraits;
 
-    public readonly array $rows;
+    public  array $rows;
 
     public function fetchDataFromGroupNode(GroupNode $bodyGroupNode): void
     {

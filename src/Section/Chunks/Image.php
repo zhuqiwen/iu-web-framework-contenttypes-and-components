@@ -24,7 +24,7 @@ class Image extends ChunkAbstract{
     public readonly string $largeImagePlacement;
     public readonly string $horizontalImagePlacement;
     public readonly string $verticalImagePlacement;
-    public readonly array $slides;
+    public array $slides;
 
 
 

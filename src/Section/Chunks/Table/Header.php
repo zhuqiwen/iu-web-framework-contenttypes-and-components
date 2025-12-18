@@ -11,7 +11,7 @@ class Header implements GroupNodeInterface
 
     use GroupNodeTraits;
 
-    public readonly array $headerCells;
+    public  array $headerCells;
 
 
     public function fetchDataFromGroupNode(GroupNode $headerGroupNode): void

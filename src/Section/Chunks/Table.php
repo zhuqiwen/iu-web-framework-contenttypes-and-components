@@ -17,7 +17,7 @@ class Table extends ChunkAbstract{
     public function fetchDataFromGroupNode(GroupNode $chunkDetails): void
     {
         $this->header = new Header($chunkDetails->getSingleDescendantNodeByPath('table-header'));
-        $this->body = new Body($chunkDetails->getSingleDescendantNodeByPath('table-body')->text ?? '');
+        $this->body = new Body($chunkDetails->getSingleDescendantNodeByPath('table-body'));
     }
 
 }

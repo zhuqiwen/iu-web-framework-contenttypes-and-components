@@ -11,7 +11,7 @@ class CallToAction extends ChunkAbstract{
     public readonly string $header;
     public readonly string $headerLevel;
     public readonly string $position;
-    public readonly array $links;
+    public array $links;
 
 
     public function fetchDataFromGroupNode(GroupNode $chunkDetails): void
