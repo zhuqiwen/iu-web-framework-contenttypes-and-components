@@ -4,6 +4,7 @@
 namespace Edu\IU\RSB\IUWebFrameworkContentTypesAndComponents\Pages;
 
 use Edu\IU\RSB\IUWebFrameworkContentTypesAndComponents\Banners\BannerInterface;
+use Edu\IU\RSB\IUWebFrameworkContentTypesAndComponents\Section\Section;
 
 trait PageTraits{
 
@@ -22,5 +23,16 @@ trait PageTraits{
     public readonly string $contentTypePath;
 
 
+
+    public function addSection(Section $section, int $position = -1):void
+    {
+        //append
+        if ($position < 0){
+            $this->sections[] = $section;
+        }else{//insert
+            array_splice($this->sections, $position, 0, [$section]);
+        }
+
+    }
 
 }

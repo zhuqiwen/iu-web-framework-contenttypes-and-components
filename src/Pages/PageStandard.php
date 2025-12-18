@@ -12,14 +12,42 @@ use Edu\IU\RSB\StructuredDataNodes\GroupNode;
 use Edu\IU\RSB\StructuredDataNodes\NodeInterface;
 use Edu\IU\RSB\StructuredDataNodes\SystemDataStructureRoot;
 
-class PageStandard{
+class PageStandard implements PageInterface{
 
     use PageTraits;
     public readonly SocialMedia $socialMedia;
 
-    public function __construct(Page $page)
+    public function __construct(?Page $page = null)
     {
+        //read
+        if ($page) {
+            $this->readFromPage($page);
+        }
 
+    }
+
+    /**
+     * READ
+     */
+
+    /**
+     * @param int $zeroBasedIndex
+     * @return Section|null
+     */
+    public function getSection(int $zeroBasedIndex): Section | null
+    {
+        $result = null;
+        if ($zeroBasedIndex < sizeof($this->sections)) {
+            $result = $this->sections[$zeroBasedIndex];
+        }
+
+        return $result;
+    }
+
+
+
+    protected function readFromPage(Page $page): void
+    {
         $systemDataStructureRoot = new SystemDataStructureRoot($page->getOldStructuredDataNode());
         $assetData = $page->getOldAsset();
         //metadata
@@ -37,23 +65,11 @@ class PageStandard{
         //social media
         $this->socialMedia = new SocialMedia($systemDataStructureRoot->getSingleDescendantNodeByPath('social-media-meta'));
         //banner
-        $this->banner = $this->constructBanner($systemDataStructureRoot->getSingleDescendantNodeByPath('banner'));
+        $this->banner = $this->fetchBanner($systemDataStructureRoot->getSingleDescendantNodeByPath('banner'));
         //section
-        $this->sections = $this->constructSections($systemDataStructureRoot->getAllDescendantNodesByPath('section'));
-
+        $this->sections = $this->fetchSections($systemDataStructureRoot->getAllDescendantNodesByPath('section'));
     }
-
-    public function getSection(int $zeroBasedIndex): Section | null
-    {
-        $result = null;
-        if ($zeroBasedIndex < sizeof($this->sections)) {
-            $result = $this->sections[$zeroBasedIndex];
-        }
-
-        return $result;
-    }
-
-    protected function constructBanner(NodeInterface | GroupNode $bannerGroupNode): BannerInterface | null
+    protected function fetchBanner(NodeInterface | GroupNode $bannerGroupNode): BannerInterface | null
     {
         $bannerType = $bannerGroupNode->getSingleDescendantNodeByPath('type')->text ?? '';
         $bannerType = preg_replace('/[^a-zA-Z]+/', '', $bannerType);
@@ -65,7 +81,7 @@ class PageStandard{
 
 
 
-    protected function constructSections(array $sectionGroupNodesArray): array
+    protected function fetchSections(array $sectionGroupNodesArray): array
     {
         $result = [];
 
@@ -76,4 +92,12 @@ class PageStandard{
         return $result;
     }
 
+
+    /**
+     * END of READ
+     */
+
+    /**
+     * CREATE with new data
+     */
 }
