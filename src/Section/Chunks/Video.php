@@ -59,10 +59,7 @@ class Video extends ChunkAbstract{
         };
     }
 
-    public function fetchDataNothing(GroupNode $chunkDetails): void
-    {
 
-    }
 
     public function fetchDataYouTube(GroupNode $chunkDetails): void
     {

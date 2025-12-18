@@ -9,6 +9,7 @@ class Audio extends ChunkAbstract{
 
     public readonly string $caption;
     public readonly string $headerLevel;
+    public readonly string $position;
     public readonly  string $transcript;
     public readonly  string $attribution;
     public readonly  string $vttId;
@@ -20,6 +21,7 @@ class Audio extends ChunkAbstract{
     public function fetchDataFromGroupNode(GroupNode $chunkDetails): void
     {
         $this->headerLevel = $chunkDetails->getSingleDescendantNodeByPath('header-level')->text ?? '';
+        $this->position = $chunkDetails->getSingleDescendantNodeByPath('position')->text ?? '';
         $this->caption = $chunkDetails->getSingleDescendantNodeByPath('caption')->text ?? '';
         $this->transcript = $chunkDetails->getSingleDescendantNodeByPath('transcript')->text ?? '';
         $this->attribution = $chunkDetails->getSingleDescendantNodeByPath('attribution')->text ?? '';
