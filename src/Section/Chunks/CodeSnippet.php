@@ -8,16 +8,16 @@ use Edu\IU\RSB\StructuredDataNodes\GroupNode;
 class CodeSnippet extends ChunkAbstract{
 
 
-    public readonly string $header;
-    public readonly string $headerLevel;
-    public readonly string $content;
+    public readonly string $position;
+    public readonly string $snippetType;
+    public readonly string $code;
 
 
     public function fetchDataFromGroupNode(GroupNode $chunkDetails): void
     {
-        $this->header = $chunkDetails->getSingleDescendantNodeByPath('header')->text ?? '';
-        $this->headerLevel = $chunkDetails->getSingleDescendantNodeByPath('header-level')->text ?? '';
-        $this->content = $chunkDetails->getSingleDescendantNodeByPath('content')->text ?? '';
+        $this->position = $chunkDetails->getSingleDescendantNodeByPath('position')->text ?? '';
+        $this->snippetType = $chunkDetails->getSingleDescendantNodeByPath('snippet-type')->text ?? '';
+        $this->code = $chunkDetails->getSingleDescendantNodeByPath('code')->text ?? '';
     }
 
 }
