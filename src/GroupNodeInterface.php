@@ -8,4 +8,7 @@ interface GroupNodeInterface{
 
     public function fetchDataFromGroupNode(GroupNode $groupNode): void;
 
+
+    public function getAttributes(): array;
+
 }
