@@ -7,9 +7,12 @@ use Edu\IU\RSB\StructuredDataNodes\GroupNode;
 
 trait GroupNodeTraits{
 
-    public function __construct(GroupNode $groupNode)
+    public function __construct(?GroupNode $groupNode = null)
     {
-        $this->fetchDataFromGroupNode($groupNode);
+        if ($groupNode){
+            $this->fetchDataFromGroupNode($groupNode);
+        }
+
     }
 
     public function getAssetStdClassObj(AssetNode $node): \stdClass

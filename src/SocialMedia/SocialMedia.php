@@ -9,7 +9,7 @@ class SocialMedia implements GroupNodeInterface{
     use GroupNodeTraits;
 
     public readonly ShareWidget $shareWidget;
-    public readonly Fackbook $facebook;
+    public readonly Facebook $facebook;
     public readonly Twitter $twitter;
 
 
@@ -17,7 +17,7 @@ class SocialMedia implements GroupNodeInterface{
     public function fetchDataFromGroupNode(GroupNode $socialMediaGroupNode): void
     {
         $this->shareWidget = new ShareWidget($socialMediaGroupNode->getSingleDescendantNodeByPath('share'));
-        $this->facebook = new Fackbook($socialMediaGroupNode->getSingleDescendantNodeByPath('facebook'));
+        $this->facebook = new Facebook($socialMediaGroupNode->getSingleDescendantNodeByPath('facebook'));
         $this->twitter = new Twitter($socialMediaGroupNode->getSingleDescendantNodeByPath('twitter'));
     }
 }

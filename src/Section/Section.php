@@ -63,4 +63,20 @@ class Section implements GroupNodeInterface{
         return $result;
     }
 
+
+    public function addChunk(ChunkInterface $chunk, int $position = -1): void
+    {
+        //append
+        if ($position < 0){
+            $this->chunks[] = $chunk;
+        }else{//insert
+            array_splice($this->chunks, $position, 0, [$chunk]);
+        }
+    }
+
+    //TODO: add Details
+    public function addDetails(Details $details): void
+    {
+        $this->details = $details;
+    }
 }
