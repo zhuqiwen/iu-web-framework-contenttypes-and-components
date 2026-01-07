@@ -72,7 +72,7 @@ trait GroupNodeTraits{
     public function fetchDataLinkInfo(GroupNode $chunkDetailsGroupNode):void
     {
         $internalLinkAssetNode = $chunkDetailsGroupNode->getSingleDescendantNodeByPath('link-internal');
-        $this->externalLink = $chunkDetailsGroupNode->getSingleDescendantNodeByPath('link-external');
+        $this->externalLink = $chunkDetailsGroupNode->getSingleDescendantNodeByPath('link-external')->text;
 
 
         $linkAssetObj = $this->getAssetStdClassObj($internalLinkAssetNode);
