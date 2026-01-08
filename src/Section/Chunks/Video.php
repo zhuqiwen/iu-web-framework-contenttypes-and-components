@@ -63,6 +63,8 @@ class Video extends ChunkAbstract{
 
     public function fetchDataYouTube(GroupNode $chunkDetails): void
     {
+        $this->title = $chunkDetails->getSingleDescendantNodeByPath('title')->text ?? '';
+
         $this->headerLevel = $chunkDetails->getSingleDescendantNodeByPath('header-level')->text ?? '';
         $this->url = $chunkDetails->getSingleDescendantNodeByPath('url')->text ?? '';
         $this->urlDescribedVersion = $chunkDetails->getSingleDescendantNodeByPath('video-id-described')->text ?? '';
