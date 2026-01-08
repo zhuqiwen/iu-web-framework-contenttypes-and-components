@@ -19,7 +19,8 @@ class CallToAction extends ChunkAbstract{
         $this->header = $chunkDetails->getSingleDescendantNodeByPath('header')->text ?? '';
         $this->headerLevel = $chunkDetails->getSingleDescendantNodeByPath('header-level')->text ?? '';
         $this->position = $chunkDetails->getSingleDescendantNodeByPath('position')->text ?? '';
-        $linkNodes = $chunkDetails->getAllDescendantNodesByPath('link');
+        $linkNodes = $chunkDetails->getAllDescendantNodesByPath('cta-link');
+
         foreach($linkNodes as $linkNode){
             $this->links[] = new CTALink($linkNode);
         }
