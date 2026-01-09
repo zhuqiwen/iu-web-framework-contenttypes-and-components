@@ -6,4 +6,5 @@ use Edu\IU\RSB\StructuredDataNodes\GroupNode;
 
 interface BannerInterface{
 
+    public function getType():string;
 }
