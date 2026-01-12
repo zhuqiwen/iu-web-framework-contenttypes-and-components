@@ -15,7 +15,7 @@ class Background implements GroupNodeInterface{
     public function fetchDataFromGroupNode(GroupNode $backgroundGroupNode): void
     {
 
-        $this->color = $groupNode->getsingleDescendantNodeByPath('bg-color')->text ?? '';
+        $this->color = $groupNode->getSingleDescendantNodeByPath('bg-color')->text ?? '';
     }
 
 
