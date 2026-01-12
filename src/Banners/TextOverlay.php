@@ -40,10 +40,10 @@ class TextOverlay implements GroupNodeInterface, BannerInterface{
         $this->mobileImageId = $mobileImage->fileId ?? '';
         $this->mobileImagePath = $mobileImage->filePath ?? '';
 
-        $this->contentPosition = $bannerGroupNode->getSingleDescendantNodeByPath('content-position');
+        $this->contentPosition = $bannerGroupNode->getSingleDescendantNodeByPath('content-position')->text ?? '';
         $this->header = $bannerGroupNode->getSingleDescendantNodeByPath('header')->text ?? '';
-        $this->subhead = $bannerGroupNode->getSingleDescendantNodeByPath('subhead');
-        $this->linkLabel = $bannerGroupNode->getSingleDescendantNodeByPath('link-label');
+        $this->subhead = $bannerGroupNode->getSingleDescendantNodeByPath('subhead')->text ?? '';
+        $this->linkLabel = $bannerGroupNode->getSingleDescendantNodeByPath('link-label')->text ?? '';
 
 
         $this->fetchDataLinkInfo($bannerGroupNode);
