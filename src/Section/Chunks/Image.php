@@ -51,7 +51,7 @@ class Image extends ChunkAbstract{
 
     public function fetchDataSlideshow(GroupNode $chunkDetails): void
     {
-        $slideGroupNodes = $chunkDetails->getSingleDescendantNodeByPath('slide');
+        $slideGroupNodes = $chunkDetails->getAllDescendantNodesByPath('slide');
         foreach ($slideGroupNodes as $slideGroupNode) {
             $this->slides[] = new Slide($slideGroupNode);
         }
